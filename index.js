@@ -1,14 +1,14 @@
 require('dotenv').config();
 
 const express = require ('express');
-// const bodyParser = require("body-parser"); 
-// const path = require("path");
-
-
+require('./services/passport')
+const authRoutes =  require('./routes/authRoutes')
 const app = express();
 
-// app.use(express.static(path.join(__dirname, "public")))
-// app.use(bodyParser.urlencoded({ extended: false }))
+ 
+//Routes
+authRoutes(app); 
+
 
 
 app.get('/', (req,res) => {
