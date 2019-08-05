@@ -1,15 +1,16 @@
 require('dotenv').config();
+const mongoose = require('mongoose') 
 
 const express = require ('express');
+require('./models/User')
 require('./services/passport')
+const keys = require('./config/keys')
 const authRoutes =  require('./routes/authRoutes')
+mongoose.connect(keys.mongoUri)
 const app = express();
-
  
 //Routes
 authRoutes(app); 
-
-
 
 app.get('/', (req,res) => {
     res.send({bye: 'Buddy'});
